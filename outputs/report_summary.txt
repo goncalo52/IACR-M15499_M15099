@@ -1,0 +1,101 @@
+BFW Face Verification Fairness Experiment
+============================================================
+
+Dataset — identities per group:
+group
+asian_females     100
+asian_males       100
+black_females     100
+black_males       100
+indian_females    100
+indian_males      100
+white_females     100
+white_males       100
+
+Global threshold: 0.404052
+
+Group thresholds:
+         group  threshold
+ asian_females   0.432761
+   asian_males   0.435274
+ black_females   0.440604
+   black_males   0.422527
+indian_females   0.433322
+  indian_males   0.407577
+ white_females   0.331336
+   white_males   0.332342
+
+============================================================
+BASELINE (global threshold)
+============================================================
+         group  valid  validity      EER  FNMR@FMR=1e-3  FNMR@FMR=1e-4  accuracy  balanced_accuracy      TPR      FPR      FNR      TNR    TP   FP     TN   FN
+       overall   True       NaN 0.499990       0.999979       0.999979  0.941385           0.935415 0.922861 0.052032 0.077139 0.947968 44756 7101 129373 3741
+ asian_females   True       NaN 0.499753       0.999506       0.999506  0.905609           0.904043 0.900741 0.092655 0.099259 0.907345  5472 1578  15453  603
+   asian_males   True       NaN 0.499670       0.999340       0.999340  0.913090           0.919367 0.932542 0.093807 0.067458 0.906193  5654 1604  15495  409
+ black_females   True       NaN 0.499835       0.999670       0.999670  0.942537           0.943878 0.946700 0.058944 0.053300 0.941056  5737 1004  16029  323
+   black_males   True       NaN 0.499917       0.999835       0.999835  0.938008           0.942621 0.952310 0.067069 0.047690 0.932931  5771 1145  15927  289
+indian_females   True       NaN 0.499917       0.999835       0.999835  0.941505           0.929137 0.903173 0.044898 0.096827 0.955102  5466  766  16295  586
+  indian_males   True       NaN 0.499835       0.999671       0.999671  0.947507           0.939592 0.922900 0.043716 0.077100 0.956284  5602  744  16275  468
+ white_females   True       NaN 0.499917       0.999835       0.999835  0.970936           0.953186 0.915923 0.009551 0.084077 0.990449  5545  163  16904  509
+   white_males   True       NaN 0.499588       0.999175       0.999175  0.971885           0.951475 0.908626 0.005675 0.091374 0.994325  5509   97  16995  554
+
+Fairness gaps:
+           metric    gap   worst_group  higher_is_better
+         accuracy 0.0663 asian_females              True
+balanced_accuracy 0.0491 asian_females              True
+              TPR 0.0516 asian_females              True
+              FPR 0.0881   asian_males             False
+              FNR 0.0516 asian_females             False
+              TNR 0.0881   asian_males              True
+
+Summary metrics:
+                      metric  value                                        note
+Disparate Impact (TPR ratio) 0.9458 < 0.8 = adverse impact  |  higher is better
+ Equal Opportunity Gap (TPR) 0.0516     lower is better  |  0 = perfectly equal
+          Equalized Odds Gap 0.0881   max(TPR gap, FPR gap)  |  lower is better
+                STD accuracy 0.0237                             lower is better
+                     STD TPR 0.0195                             lower is better
+                     STD FPR 0.0333                             lower is better
+
+============================================================
+MITIGATED (per-group thresholds)
+============================================================
+         group  valid  validity      EER  FNMR@FMR=1e-3  FNMR@FMR=1e-4  accuracy  balanced_accuracy      TPR      FPR      FNR      TNR    TP   FP     TN   FN
+       overall   True       NaN 0.499990       0.999979       0.999979  0.946386           0.938033 0.920469 0.044404 0.079531 0.955596 44640 6060 130414 3857
+ asian_females   True       NaN 0.499753       0.999506       0.999506  0.917554           0.903992 0.875391 0.067406 0.124609 0.932594  5318 1148  15883  757
+   asian_males   True       NaN 0.499670       0.999340       0.999340  0.920948           0.916599 0.907472 0.074273 0.092528 0.925727  5502 1270  15829  561
+ black_females   True       NaN 0.499835       0.999670       0.999670  0.950678           0.943124 0.927228 0.040979 0.072772 0.959021  5619  698  16335  441
+   black_males   True       NaN 0.499917       0.999835       0.999835  0.945314           0.944909 0.944059 0.054241 0.055941 0.945759  5721  926  16146  339
+indian_females   True       NaN 0.499917       0.999835       0.999835  0.949163           0.929473 0.888136 0.029189 0.111864 0.970811  5375  498  16563  677
+  indian_males   True       NaN 0.499835       0.999671       0.999671  0.948504           0.939632 0.920923 0.041659 0.079077 0.958341  5590  709  16310  480
+ white_females   True       NaN 0.499917       0.999835       0.999835  0.967259           0.964286 0.958044 0.029472 0.041956 0.970528  5800  503  16564  254
+   white_males   True       NaN 0.499588       0.999175       0.999175  0.971669           0.962291 0.942603 0.018020 0.057397 0.981980  5715  308  16784  348
+
+Fairness gaps:
+           metric    gap   worst_group  higher_is_better
+         accuracy 0.0541 asian_females              True
+balanced_accuracy 0.0603 asian_females              True
+              TPR 0.0827 asian_females              True
+              FPR 0.0563   asian_males             False
+              FNR 0.0827 asian_females             False
+              TNR 0.0563   asian_males              True
+
+Summary metrics:
+                      metric  value                                        note
+Disparate Impact (TPR ratio) 0.9137 < 0.8 = adverse impact  |  higher is better
+ Equal Opportunity Gap (TPR) 0.0827     lower is better  |  0 = perfectly equal
+          Equalized Odds Gap 0.0827   max(TPR gap, FPR gap)  |  lower is better
+                STD accuracy 0.0192                             lower is better
+                     STD TPR 0.0287                             lower is better
+                     STD FPR 0.0196                             lower is better
+
+============================================================
+GAP REDUCTION SUMMARY
+============================================================
+           metric  gap_baseline  gap_mitigated  reduction  reduction%
+         accuracy        0.0663         0.0541     0.0122        18.4
+balanced_accuracy        0.0491         0.0603    -0.0112       -22.8
+              TPR        0.0516         0.0827    -0.0311       -60.3
+              FPR        0.0881         0.0563     0.0318        36.1
+              FNR        0.0516         0.0827    -0.0311       -60.3
+              TNR        0.0881         0.0563     0.0318        36.1

@@ -1,0 +1,113 @@
+THREE-WAY COMPARISON SUMMARY
+Baseline | Post-hoc | Fine-tuned
+======================================================================
+
+======================================================================
+BASELINE
+======================================================================
+         group  valid  validity      EER  FNMR@FMR=1e-3  FNMR@FMR=1e-4  accuracy  balanced_accuracy      TPR      FPR      FNR      TNR    TP   FP     TN   FN
+       overall   True       NaN 0.499990       0.999979       0.999979  0.941385           0.935415 0.922861 0.052032 0.077139 0.947968 44756 7101 129373 3741
+ asian_females   True       NaN 0.499753       0.999506       0.999506  0.905609           0.904043 0.900741 0.092655 0.099259 0.907345  5472 1578  15453  603
+   asian_males   True       NaN 0.499670       0.999340       0.999340  0.913090           0.919367 0.932542 0.093807 0.067458 0.906193  5654 1604  15495  409
+ black_females   True       NaN 0.499835       0.999670       0.999670  0.942537           0.943878 0.946700 0.058944 0.053300 0.941056  5737 1004  16029  323
+   black_males   True       NaN 0.499917       0.999835       0.999835  0.938008           0.942621 0.952310 0.067069 0.047690 0.932931  5771 1145  15927  289
+indian_females   True       NaN 0.499917       0.999835       0.999835  0.941505           0.929137 0.903173 0.044898 0.096827 0.955102  5466  766  16295  586
+  indian_males   True       NaN 0.499835       0.999671       0.999671  0.947507           0.939592 0.922900 0.043716 0.077100 0.956284  5602  744  16275  468
+ white_females   True       NaN 0.499917       0.999835       0.999835  0.970936           0.953186 0.915923 0.009551 0.084077 0.990449  5545  163  16904  509
+   white_males   True       NaN 0.499588       0.999175       0.999175  0.971885           0.951475 0.908626 0.005675 0.091374 0.994325  5509   97  16995  554
+
+Fairness gaps:
+           metric      gap         worst          best
+         accuracy 0.066276   white_males asian_females
+balanced_accuracy 0.049143 white_females asian_females
+              TPR 0.051569   black_males asian_females
+              FPR 0.088131   asian_males   white_males
+              FNR 0.051569 asian_females   black_males
+              TNR 0.088131   white_males   asian_males
+
+Additional fairness metrics:
+                     metric  value
+     Disparate Impact (TPR) 0.9458
+Equal Opportunity Gap (TPR) 0.0516
+         Equalized Odds Gap 0.0881
+               STD accuracy 0.0237
+                    STD TPR 0.0195
+                    STD FPR 0.0333
+                    STD FNR 0.0195
+
+======================================================================
+POST-HOC
+======================================================================
+         group  valid  validity      EER  FNMR@FMR=1e-3  FNMR@FMR=1e-4  accuracy  balanced_accuracy      TPR      FPR      FNR      TNR    TP   FP     TN   FN
+       overall   True       NaN 0.499990       0.999979       0.999979  0.946386           0.938033 0.920469 0.044404 0.079531 0.955596 44640 6060 130414 3857
+ asian_females   True       NaN 0.499753       0.999506       0.999506  0.917554           0.903992 0.875391 0.067406 0.124609 0.932594  5318 1148  15883  757
+   asian_males   True       NaN 0.499670       0.999340       0.999340  0.920948           0.916599 0.907472 0.074273 0.092528 0.925727  5502 1270  15829  561
+ black_females   True       NaN 0.499835       0.999670       0.999670  0.950678           0.943124 0.927228 0.040979 0.072772 0.959021  5619  698  16335  441
+   black_males   True       NaN 0.499917       0.999835       0.999835  0.945314           0.944909 0.944059 0.054241 0.055941 0.945759  5721  926  16146  339
+indian_females   True       NaN 0.499917       0.999835       0.999835  0.949163           0.929473 0.888136 0.029189 0.111864 0.970811  5375  498  16563  677
+  indian_males   True       NaN 0.499835       0.999671       0.999671  0.948504           0.939632 0.920923 0.041659 0.079077 0.958341  5590  709  16310  480
+ white_females   True       NaN 0.499917       0.999835       0.999835  0.967259           0.964286 0.958044 0.029472 0.041956 0.970528  5800  503  16564  254
+   white_males   True       NaN 0.499588       0.999175       0.999175  0.971669           0.962291 0.942603 0.018020 0.057397 0.981980  5715  308  16784  348
+
+Fairness gaps:
+           metric      gap         worst          best
+         accuracy 0.054115   white_males asian_females
+balanced_accuracy 0.060294 white_females asian_females
+              TPR 0.082653 white_females asian_females
+              FPR 0.056253   asian_males   white_males
+              FNR 0.082653 asian_females white_females
+              TNR 0.056253   white_males   asian_males
+
+Additional fairness metrics:
+                     metric  value
+     Disparate Impact (TPR) 0.9137
+Equal Opportunity Gap (TPR) 0.0827
+         Equalized Odds Gap 0.0827
+               STD accuracy 0.0192
+                    STD TPR 0.0287
+                    STD FPR 0.0196
+                    STD FNR 0.0287
+
+======================================================================
+FINE-TUNED
+======================================================================
+ accuracy  balanced_accuracy      TPR      FPR      FNR      TNR    TP    FP     TN   FN          group
+ 0.922480           0.921340 0.918943 0.076264 0.081057 0.923736 44566 10408 126066 3931        overall
+ 0.889812           0.885279 0.875720 0.105161 0.124280 0.894839  5320  1791  15240  755  asian_females
+ 0.895130           0.903318 0.920501 0.113866 0.079499 0.886134  5581  1947  15152  482    asian_males
+ 0.922574           0.927953 0.939274 0.083368 0.060726 0.916632  5692  1420  15613  368  black_females
+ 0.924347           0.931556 0.946700 0.083587 0.053300 0.916413  5737  1427  15645  323    black_males
+ 0.927357           0.918754 0.900694 0.063185 0.099306 0.936815  5451  1078  15983  601 indian_females
+ 0.931742           0.926778 0.916310 0.062753 0.083690 0.937247  5562  1068  15951  508   indian_males
+ 0.931145           0.931457 0.932111 0.069198 0.067889 0.930802  5643  1181  15886  411  white_females
+ 0.957720           0.945659 0.920336 0.029019 0.079664 0.970981  5580   496  16596  483    white_males
+
+Fairness gaps:
+           metric      gap         worst          best
+         accuracy 0.067908   white_males asian_females
+balanced_accuracy 0.060379   white_males asian_females
+              TPR 0.070980   black_males asian_females
+              FPR 0.084847   asian_males   white_males
+              FNR 0.070980 asian_females   black_males
+              TNR 0.084847   white_males   asian_males
+
+Additional fairness metrics:
+                     metric  value
+     Disparate Impact (TPR) 0.9250
+Equal Opportunity Gap (TPR) 0.0710
+         Equalized Odds Gap 0.0848
+               STD accuracy 0.0215
+                    STD TPR 0.0226
+                    STD FPR 0.0267
+                    STD FNR 0.0226
+
+======================================================================
+FAIRNESS GAP SIDE-BY-SIDE
+======================================================================
+           metric  gap_baseline  gap_post_hoc  gap_fine_tuned
+         accuracy      0.066276      0.054115        0.067908
+balanced_accuracy      0.049143      0.060294        0.060379
+              TPR      0.051569      0.082653        0.070980
+              FPR      0.088131      0.056253        0.084847
+              FNR      0.051569      0.082653        0.070980
+              TNR      0.088131      0.056253        0.084847
